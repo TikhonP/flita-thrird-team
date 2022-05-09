@@ -9,7 +9,7 @@ void countingSort(int array[], int size) {
         if (array[i] > max)
             max = array[i];
     }
-
+    
     int * count = malloc(max+1 * sizeof(int));
     
     for (int i = 0; i <= max; ++i) {
@@ -19,7 +19,7 @@ void countingSort(int array[], int size) {
     for (int i = 0; i < size; i++) {
         count[array[i]]++;
     }
-
+    
     for (int i = 1; i <= max; i++) {
         count[i] += count[i - 1];
     }
@@ -28,7 +28,7 @@ void countingSort(int array[], int size) {
         output[count[array[i]] - 1] = array[i];
         count[array[i]]--;
     }
-
+    
     for (int i = 0; i < size; i++) {
         array[i] = output[i];
     }
@@ -43,14 +43,23 @@ void printArray(int array[], int size) {
     printf("\n");
 }
 
+void captureArray(int array[], int size) {
+    int value;
+    for (int i = 0; i < size; ++i) {
+        scanf("%d", &value);
+        array[i] = value;
+    }
+}
+
 int main() {
-    int data[] = {8, 7, 2, 1, 0, 9, 6};
-    
-    int n = sizeof(data) / sizeof(data[0]);
+    int n;
+    scanf("%d", &n);
+    int * data = malloc(n * sizeof(int));
+    captureArray(data, n);
     
     printf("Unsorted Array\n");
     printArray(data, n);
-      
+    
     countingSort(data, n);
     
     printf("Sorted array in ascending order: \n");
