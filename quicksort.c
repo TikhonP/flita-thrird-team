@@ -31,18 +31,14 @@ void quickSort(int array[], int low, int high) {
 }
 
 void printArray(int array[], int size) {
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i)
         printf("%d  ", array[i]);
-    }
-    printf("\n");
+    puts("");
 }
 
 void captureArray(int array[], int size) {
-    int value;
-    for (int i = 0; i < size; ++i) {
-        scanf("%d", &value);
-        array[i] = value;
-    }
+    for (int i = 0; i < size; ++i)
+        scanf("%d", &array[i]);
 }
 
 int main() {
@@ -51,11 +47,12 @@ int main() {
     int * data = malloc(n * sizeof(int));
     captureArray(data, n);
     
-    printf("Unsorted Array\n");
+    puts("Unsorted Array");
     printArray(data, n);
     
     quickSort(data, 0, n - 1);
     
-    printf("Sorted array in ascending order: \n");
+    puts("Sorted array in ascending order:");
     printArray(data, n);
+    free(data);
 }
